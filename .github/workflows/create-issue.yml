@@ -3,7 +3,7 @@ name: Create Issue on PR Merge
 on:
   pull_request:
     branches:
-      - main
+      - master
     types: [closed]
 jobs:
   create-issue:
