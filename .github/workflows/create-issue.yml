@@ -21,13 +21,6 @@ jobs:
           title: An example issue
           content-filepath: .github/ISSUE_TEMPLATE/release.md
 
-      - name: Create or Update Project Card
-        uses: peter-evans/create-or-update-project-card@v2
-        with:
-          project-name: My project
-          column-name: My column
-          issue-number: ${{ steps.ciff.outputs.issue-number }}
-
       # - name: Create GitHub Issue on PR merge
       #   run: |
       #     GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}"
