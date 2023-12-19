@@ -1,11 +1,16 @@
 ---
-name: Release
-about: Trigger release on prod once the issue is closed
-title: "[Release]"
-labels: auto-created, good first issue
+name: Release Request
+about: Suggest a new feature for this project
+title: "[Release Request] - "
+labels: auto-created
 assignees: ""
 ---
 
-This issue was automatically created when PR #'"$PR_NUMBER"' was merged.
-PR Title: '"$PR_TITLE"'
-PR Author: '"$PR_AUTHOR"'
+**Is your feature request related to a problem? Please describe.**
+A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+
+**Describe the solution you'd like**
+A clear and concise description of what you want to happen.
+
+**Additional context**
+Add any other context or screenshots about the feature request here.
