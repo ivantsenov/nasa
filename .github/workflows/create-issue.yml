@@ -33,7 +33,9 @@ jobs:
           # Create a GitHub issue using the GitHub API
           RESPONSE=$(curl -sSL -H "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
-           
+            -d '{
+              "title": "Automatically created issue",
+            }' \
             "https://api.github.com/repos/$REPO_FULL_NAME/issues")
 
           # Extract the created issue number from the API response
