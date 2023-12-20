@@ -16,33 +16,33 @@ jobs:
 
       - name: Create GitHub Issue on PR merge
         id: new-issue
-        uses: peter-evans/create-issue-from-file@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          title: Release Request
-          labels: auto-created
-          content-filepath: .github/ISSUE_TEMPLATE/release.md
-        # run: |
-        #   GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}"
-        #   REPO_FULL_NAME="${{ github.repository }}"
-        #   PR_NUMBER="${{ github.event.pull_request.number }}"
-        #   PR_TITLE="${{ github.event.pull_request.title }}"
-        #   PR_AUTHOR="${{ github.event.pull_request.user.login }}"
-        #   TEMPLATE_FILE=".github/ISSUE_TEMPLATE/release.md"
+        # uses: peter-evans/create-issue-from-file@v4
+        # with:
+        #   token: ${{ secrets.GITHUB_TOKEN }}
+        #   title: Release Request
+        #   labels: auto-created
+        #   content-filepath: .github/ISSUE_TEMPLATE/release.md
+        run: |
+          GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}"
+          REPO_FULL_NAME="${{ github.repository }}"
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          PR_AUTHOR="${{ github.event.pull_request.user.login }}"
+          TEMPLATE_FILE=".github/ISSUE_TEMPLATE/release.md"
 
-        #   # Create a GitHub issue using the GitHub API
-        #   RESPONSE=$(curl -sSL -H "Authorization: token $GITHUB_TOKEN" \
-        #     -H "Accept: application/vnd.github.v3+json" \
-        #     -d '{
-        #       "title": "Automatically created issue",
-        #       "body": "This issue was automatically created when PR #'"$PR_NUMBER"' was merged.\n\nPR Title: '"$PR_TITLE"'\nPR Author: '"$PR_AUTHOR"'",
-        #       "labels": ["auto-created"]
-        #     }' \
-        #     "https://api.github.com/repos/$REPO_FULL_NAME/issues")
+          # Create a GitHub issue using the GitHub API
+          RESPONSE=$(curl -sSL -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            # -d '{
+            #   "title": "Automatically created issue",
+            #   "body": "This issue was automatically created when PR #'"$PR_NUMBER"' was merged.\n\nPR Title: '"$PR_TITLE"'\nPR Author: '"$PR_AUTHOR"'",
+            #   "labels": ["auto-created"]
+            # }' \
+            "https://api.github.com/repos/$REPO_FULL_NAME/issues")
 
-        #   # Extract the created issue number from the API response
-        #   ISSUE_NUMBER=$(echo "$RESPONSE" | jq -r '.number')
+          # Extract the created issue number from the API response
+          ISSUE_NUMBER=$(echo "$RESPONSE" | jq -r '.number')
 
-        #   echo "Issue created: $REPO_FULL_NAME#$ISSUE_NUMBER"
+          echo "Issue created: $REPO_FULL_NAME#$ISSUE_NUMBER"
 
   # Add other jobs or steps if needed
